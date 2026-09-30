@@ -34,7 +34,8 @@ https://keeeeei-soeda.github.io/shadan-hojin-slide/
 |---|---|
 | 理事（大友・小熊・清水・佐瀬・鈴木・副田の順） | `assets/board/01.jpg` 〜 `06.jpg` |
 | アドバイザー（増田・坪の順） | `assets/advisors/01.jpg`、`02.jpg` |
-| お問い合わせ用QRコード | `assets/qr.png` |
+| QRコード：医療AIガバナンス管理士（https://www.iha-as.com/kanrishi-live/） | `assets/qr-kanrishi.png`（配置済み） |
+| QRコード：医療法人向け認定制度（https://www.iha-as.com/entry-live/） | `assets/qr-corporate.png`（配置済み） |
 
 人物写真は丸く切り抜いて表示するため、顔が中央に来る正方形の画像を用意してください。
 

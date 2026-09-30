@@ -857,7 +857,7 @@ body,
 .closing-body {
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 48px;
   flex: 1;
 }
 
@@ -916,18 +916,44 @@ body,
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  width: 260px;
+}
+
+.qr-list {
+  display: flex;
+  gap: 24px;
+}
+
+.qr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 230px;
+}
+
+.qr-label {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--gold);
 }
 
 .qr {
   position: relative;
-  width: 220px;
-  height: 220px;
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
   background: var(--ivory);
 }
 
 .qr img {
   object-fit: contain;
+  image-rendering: pixelated;
+  mix-blend-mode: multiply;
 }
 
 .qr-empty {

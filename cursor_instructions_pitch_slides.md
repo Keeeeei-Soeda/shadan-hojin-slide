@@ -285,5 +285,6 @@ Googleスライドの現行版とジェンスパーク用指示書で文言が�
 - ⑨：3列×2段のまま、各カードは「写真を左・名前と肩書きを右」の横並びにする（肩書き20pxを確保するため）。
 - ⑨：大友先生の肩書きは「会長」で確定。
 - 「※8章の要確認事項を参照」はスライドに表示しない。
+- ⑪のQRコードは2つ並べる：「医療AIガバナンス管理士」（`assets/qr-kanrishi.png`、https://www.iha-as.com/kanrishi-live/）と「医療法人向け認定制度」（`assets/qr-corporate.png`、https://www.iha-as.com/entry-live/）。
 - ⑪の配布場所は未確定のため、【配布場所】のプレースホルダーのまま（`TODO:`）。
 - フォントは、スライドで使う文字だけに絞ったサブセット（woff2）を `assets/fonts/` に同梱する。文言を変えたら `scripts/build-fonts.py` で作り直す。

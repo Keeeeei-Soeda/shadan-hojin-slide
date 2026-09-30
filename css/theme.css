@@ -37,8 +37,27 @@ body,
   word-break: auto-phrase;
 }
 
+/* 大きさは js/fit.js が表示領域に合わせて指定する */
+.reveal-viewport .reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .reveal .slides {
   text-align: left;
+}
+
+.fit-debug {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  z-index: 100;
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, .75);
+  font: 14px/1.5 ui-monospace, Menlo, monospace;
+  color: #fff;
 }
 
 .reveal .slides > section {

@@ -1,0 +1,25 @@
+/* scripts/build-fonts.py で生成。index.html で使う文字だけを含むサブセット */
+
+@font-face {
+  font-family: "Shippori Mincho B1";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/shippori-mincho-b1-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Zen Kaku Gothic New";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/zen-kaku-gothic-new-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Zen Kaku Gothic New";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/zen-kaku-gothic-new-500.woff2") format("woff2");
+}

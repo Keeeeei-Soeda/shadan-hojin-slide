@@ -1,0 +1,246 @@
+/*
+ * 自動モーション
+ * js/motion.js が各スライドの対象要素に .m-item と表示順（--i）・開始時刻（--d）を付与し、
+ * 表示中のスライドに .m-play を付けると再生される。
+ * 要素の通常状態は「完成形」とし、アニメーションの開始状態だけをキーフレームで定義する。
+ */
+
+:root {
+  --m-ease: cubic-bezier(.2, .8, .2, 1);
+  --m-gold-glow: rgba(201, 164, 92, .9);
+}
+
+/* ---------- 既定：下からふわっと＋ブラー解除 ---------- */
+
+.m-play .m-item {
+  animation: m-rise .7s var(--m-ease) var(--d, 0ms) both;
+}
+
+/* ---------- .m-line：線が伸びる ---------- */
+
+.m-line {
+  transform-origin: left center;
+}
+
+.m-line.is-vertical {
+  transform-origin: center top;
+}
+
+.m-play .m-item.m-line {
+  animation-name: m-line-x;
+  animation-duration: .6s;
+}
+
+.m-play .m-item.m-line.is-vertical {
+  animation-name: m-line-y;
+}
+
+/* ---------- .m-scale：拡大しながら出現 ---------- */
+
+.m-play .m-item.m-scale {
+  animation-name: m-scale;
+}
+
+/* ---------- .m-star：★が1つずつ点灯 ---------- */
+
+.m-star-unit {
+  display: inline-block;
+}
+
+.m-play .m-item.m-star-unit {
+  animation-name: m-star;
+  animation-duration: .5s;
+}
+
+/* ---------- .m-mask：下からマスクで立ち上がる ---------- */
+
+.m-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .06em;
+}
+
+.m-mask-inner {
+  display: block;
+}
+
+.m-play .m-item.m-mask {
+  animation: none;
+}
+
+.m-play .m-item.m-mask .m-mask-inner {
+  animation: m-mask .8s var(--m-ease) var(--d, 0ms) both;
+}
+
+/* ---------- .m-frame：枠線が四辺をなぞる ---------- */
+
+.m-frame rect {
+  stroke-dasharray: 1 1;
+}
+
+.m-play .m-item.m-frame {
+  animation: none;
+}
+
+.m-play .m-item.m-frame rect {
+  animation: m-draw .9s var(--m-ease) var(--d, 0ms) both;
+}
+
+/* ---------- .m-ring：円形の縁取りを描く ---------- */
+
+.m-ring .ring {
+  transform: rotate(-90deg);
+}
+
+.m-ring .ring circle {
+  stroke-dasharray: 1 1;
+}
+
+.m-play .m-item.m-ring {
+  animation-name: m-fade;
+  animation-duration: .8s;
+}
+
+.m-play .m-item.m-ring .ring circle {
+  animation: m-draw .8s var(--m-ease) var(--d, 0ms) both;
+}
+
+/* ---------- .m-wipe：左から右へワイプ ---------- */
+
+.m-play .m-item.m-wipe {
+  animation-name: m-wipe;
+}
+
+/* ---------- .m-strike：取り消し線が引かれる ---------- */
+
+.m-strike::after {
+  transform-origin: left center;
+}
+
+.m-play .m-item.m-strike {
+  animation: none;
+}
+
+.m-play .m-item.m-strike::after {
+  animation: m-line-x .5s var(--m-ease) var(--d, 0ms) both;
+}
+
+/* ---------- .m-emph：ゴールドで強調 ---------- */
+
+.m-play .m-item.m-emph {
+  animation: m-emph .5s ease var(--d, 0ms) both;
+}
+
+/* ---------- .m-count：カウントアップ（数値は motion.js が更新） ---------- */
+
+.m-play .m-item.m-count {
+  animation: none;
+}
+
+.m-count.is-glowing {
+  animation: m-glow .7s ease-out both;
+}
+
+/* ---------- auto-animate で移動する要素は再生しない ---------- */
+
+.m-play .m-item.m-skip,
+.m-play .m-item.m-skip *,
+.m-play .m-item.m-skip::after {
+  animation: none;
+}
+
+/* ---------- キーフレーム ---------- */
+
+@keyframes m-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes m-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes m-line-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes m-line-y {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes m-scale {
+  from {
+    opacity: 0;
+    transform: scale(.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes m-star {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    text-shadow: none;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15);
+    text-shadow: 0 0 18px var(--m-gold-glow);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: none;
+  }
+}
+
+@keyframes m-mask {
+  from { transform: translateY(105%); }
+  to   { transform: none; }
+}
+
+@keyframes m-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes m-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes m-emph {
+  from { color: var(--ivory); }
+  to   { color: var(--gold); }
+}
+
+@keyframes m-glow {
+  0%   { text-shadow: none; }
+  40%  { text-shadow: 0 0 32px var(--m-gold-glow); }
+  100% { text-shadow: none; }
+}
+
+/* ---------- 動きを減らす設定では即時表示 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .m-play .m-item,
+  .m-play .m-item *,
+  .m-play .m-item::after,
+  .m-count.is-glowing {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,953 @@
+/*
+ * デザインA｜ネイビー×ゴールド
+ * 基準サイズ 1280×720。フォントサイズの下限：
+ *   表紙タイトル 64px / 大見出し 40px / 小見出し 26px / 本文 20px / 注記・英字ラベル 16px
+ */
+
+:root {
+  --bg:        #0E1B33;
+  --gold:      #C9A45C;
+  --ivory:     #F4EFE4;
+  --beige:     #D8CFBD;
+  --navy-soft: #1A2A4A;
+
+  --gold-line: rgba(201, 164, 92, .55);
+
+  --font-mincho: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  --font-gothic: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "YuGothic", "Meiryo", "Noto Sans JP", sans-serif;
+
+  --pad-x: 88px;
+  --pad-top: 64px;
+  --pad-bottom: 56px;
+}
+
+html,
+body,
+.reveal-viewport {
+  background: var(--bg);
+}
+
+.reveal {
+  font-family: var(--font-gothic);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ivory);
+  line-break: strict;
+  word-break: auto-phrase;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides > section {
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 1280px;
+  height: 720px;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+}
+
+.reveal ::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ---------- 共通の文字要素 ---------- */
+
+.label {
+  margin: 0;
+  font-family: var(--font-gothic);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .2em;
+  color: var(--gold);
+}
+
+.title {
+  margin: 14px 0 0;
+  font-family: var(--font-mincho);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  color: var(--ivory);
+}
+
+.card-title {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  color: var(--ivory);
+}
+
+.card-text {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--beige);
+}
+
+.note {
+  margin: 0;
+  font-size: 18px;
+  color: var(--beige);
+}
+
+.stars,
+.pillar-stars,
+.tier-stars,
+.m-star {
+  color: var(--gold);
+}
+
+/* ---------- 証書風の枠（①⑪） ---------- */
+
+.frame {
+  position: absolute;
+  inset: 28px;
+  pointer-events: none;
+}
+
+.frame svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.frame rect {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+
+/* ---------- 写真・QRの枠 ---------- */
+
+.photo {
+  position: relative;
+  flex: none;
+  width: 92px;
+  height: 92px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: var(--navy-soft);
+  overflow: hidden;
+}
+
+.photo img,
+.qr img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo.has-image img,
+.qr.has-image img {
+  display: block;
+}
+
+.photo-empty,
+.qr-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  letter-spacing: .1em;
+}
+
+.photo-empty {
+  color: var(--beige);
+}
+
+.photo.has-image .photo-empty,
+.qr.has-image .qr-empty {
+  display: none;
+}
+
+/* ⑩の大きな写真枠：縁取りはSVGの円で描く */
+.photo.is-large {
+  width: 196px;
+  height: 196px;
+  border: 0;
+  overflow: visible;
+}
+
+.photo.is-large img {
+  border-radius: 50%;
+}
+
+.photo.is-large .ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.photo.is-large .ring circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+
+/* ---------- 矢印（⑦⑧） ---------- */
+
+.arrow {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+/* ================================================================
+ * ① 表紙
+ * ================================================================ */
+
+.s-cover {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.s-cover .stars {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: .35em;
+  padding-left: .35em;
+  line-height: 1;
+}
+
+.cover-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 28px 0 0;
+  font-family: var(--font-mincho);
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .08em;
+  color: var(--ivory);
+}
+
+.s-cover .rule {
+  width: 96px;
+  height: 1px;
+  margin: 32px 0 28px;
+  background: var(--gold);
+}
+
+.cover-org {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.s-cover .label {
+  margin-top: 6px;
+}
+
+.cover-event {
+  margin: 30px 0 0;
+  font-size: 20px;
+  color: var(--beige);
+}
+
+.cover-date {
+  margin: 4px 0 0;
+  font-size: 20px;
+  letter-spacing: .08em;
+  color: var(--beige);
+}
+
+/* ================================================================
+ * ② 私たちはこんな団体です
+ * ================================================================ */
+
+.s-about .lead {
+  margin: 18px 0 0;
+  font-size: 22px;
+  color: var(--beige);
+}
+
+.biz {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.biz-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 170px;
+  padding: 26px 30px;
+  border: 1px solid var(--gold-line);
+  box-sizing: border-box;
+}
+
+.biz-card .card-title {
+  margin-top: 4px;
+}
+
+.about-closing {
+  margin: auto 0 0;
+  font-family: var(--font-mincho);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-align: center;
+}
+
+.m-strike {
+  position: relative;
+  display: inline-block;
+  color: var(--beige);
+}
+
+.m-strike::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 54%;
+  height: 1px;
+  background: var(--ivory);
+}
+
+.m-emph {
+  color: var(--gold);
+}
+
+/* ================================================================
+ * ③ 誰でもAIが使える時代
+ * ================================================================ */
+
+.contrast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  flex: 1;
+  margin-top: 44px;
+}
+
+.contrast-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px 48px;
+  box-sizing: border-box;
+}
+
+.contrast-card .card-title {
+  font-size: 34px;
+}
+
+.contrast-card .card-text {
+  font-size: 23px;
+}
+
+.contrast-card.is-light {
+  background: var(--ivory);
+}
+
+.contrast-card.is-light .label,
+.contrast-card.is-light .card-title,
+.contrast-card.is-light .card-text {
+  color: var(--bg);
+}
+
+.contrast-card.is-dark {
+  border: 1px solid var(--gold-line);
+  background: var(--navy-soft);
+}
+
+.contrast-card.is-dark .card-text {
+  color: var(--ivory);
+}
+
+/* ================================================================
+ * ④ 「知らなかった」では済まされない
+ * ================================================================ */
+
+.risks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.risk-line {
+  height: 1px;
+  background: var(--gold);
+}
+
+.risk-body {
+  padding-top: 22px;
+}
+
+.risk-num {
+  margin: 0 0 6px;
+  font-family: var(--font-mincho);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gold);
+}
+
+.risk-body .card-title {
+  margin-bottom: 10px;
+}
+
+.risk-body .card-text {
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.band {
+  margin: auto calc(var(--pad-x) * -1) calc(var(--pad-bottom) * -1);
+  padding: 26px var(--pad-x);
+  background: var(--gold);
+  font-family: var(--font-mincho);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-align: center;
+  color: var(--bg);
+}
+
+/* ================================================================
+ * ⑤ 組織と個人、2つの側面から支えます
+ * ================================================================ */
+
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  column-gap: 56px;
+  flex: 1;
+  margin-top: 40px;
+}
+
+.pillars-divider {
+  grid-column: 2;
+  grid-row: 1;
+  width: 1px;
+  background: var(--gold);
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  grid-row: 1;
+}
+
+.pillar-org {
+  grid-column: 1;
+}
+
+.pillar-ind {
+  grid-column: 3;
+}
+
+.pillar-stars {
+  margin: 0;
+  font-size: 34px;
+  line-height: 48px;
+  letter-spacing: .2em;
+}
+
+.icon-medal {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.pillar .card-title {
+  margin-top: 2px;
+}
+
+.pillar-areas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.pillar-areas-label {
+  margin: 0;
+  font-size: 20px;
+  color: var(--beige);
+}
+
+.area-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.area-tag {
+  margin: 0;
+  padding: 4px 14px;
+  border: 1px solid var(--gold);
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ivory);
+}
+
+.pillar-note {
+  margin: auto 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--gold-line);
+  font-size: 20px;
+  color: var(--ivory);
+}
+
+/* ================================================================
+ * ⑥ 法人認定制度「スリースター」
+ * ================================================================ */
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 30px;
+}
+
+.tier {
+  padding-top: 16px;
+  border-top: 1px solid var(--gold-line);
+}
+
+.tier-stars {
+  margin: 0 0 8px;
+  font-size: 34px;
+  line-height: 48px;
+  letter-spacing: .2em;
+}
+
+.tier .card-text {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.areas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+  column-gap: 32px;
+  row-gap: 12px;
+  margin-top: 32px;
+}
+
+.areas-label {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 20px;
+  color: var(--beige);
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.area-text {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--beige);
+}
+
+.annual {
+  margin: auto 0 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.annual .m-emph {
+  margin-right: .6em;
+  font-family: var(--font-mincho);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* ================================================================
+ * ⑦ 医療AIガバナンス管理士
+ * ================================================================ */
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 36px 0 0;
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 176px 1fr;
+  column-gap: 24px;
+}
+
+.fact-term {
+  margin: 0;
+  padding-top: 2px;
+  border-top: 1px solid var(--gold);
+  font-family: var(--font-mincho);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.fact-desc {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.7;
+}
+
+.fact-sub {
+  font-size: 20px;
+  color: var(--beige);
+}
+
+.flow {
+  margin-top: 30px;
+}
+
+.flow-label {
+  margin: 0 0 12px;
+  font-size: 20px;
+  color: var(--beige);
+}
+
+.flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.flow-step {
+  flex: 1;
+  padding: 18px 28px;
+  border: 1px solid var(--gold-line);
+}
+
+.flow-year {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.flow-text {
+  margin: 2px 0 0;
+  font-size: 22px;
+}
+
+.s-manager .note {
+  margin-top: auto;
+}
+
+/* ================================================================
+ * ⑧ 他との違い
+ * ================================================================ */
+
+.compare {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex: 1;
+  margin-top: 36px;
+}
+
+.compare-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+  justify-content: center;
+  padding: 36px 44px;
+  box-sizing: border-box;
+}
+
+.compare-card.is-general {
+  flex: 0 0 380px;
+  border: 1px solid rgba(216, 207, 189, .35);
+}
+
+.compare-card.is-general .label {
+  color: var(--beige);
+}
+
+.compare-card.is-general .card-title {
+  color: var(--beige);
+}
+
+.compare-card.is-ours {
+  flex: 1;
+  border: 1px solid var(--gold);
+}
+
+.compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 22px;
+  color: var(--beige);
+}
+
+.compare-list.is-starred {
+  gap: 14px;
+  font-size: 24px;
+  color: var(--ivory);
+}
+
+.compare-list.is-starred li {
+  display: flex;
+  gap: 12px;
+}
+
+.compare-list .m-star {
+  display: inline-block;
+}
+
+/* ================================================================
+ * ⑨ 理事紹介
+ * ================================================================ */
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+  column-gap: 28px;
+  row-gap: 56px;
+  flex: 1;
+  padding-bottom: 32px;
+}
+
+.person {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.person-text {
+  min-width: 0;
+}
+
+.person-name {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .06em;
+}
+
+.person-role {
+  margin: 4px 0 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--gold);
+}
+
+.person-aff {
+  margin: 2px 0 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--beige);
+}
+
+/* ================================================================
+ * ⑩ アドバイザー紹介
+ * ================================================================ */
+
+.advisors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  flex: 1;
+  margin-top: 36px;
+}
+
+.advisor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.advisor-text {
+  margin-top: 20px;
+}
+
+.advisor-field {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: .1em;
+  color: var(--gold);
+}
+
+.advisor-name {
+  margin: 2px 0 0;
+  font-family: var(--font-mincho);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .1em;
+}
+
+.advisor-aff {
+  margin: 8px 0 0;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.advisor-books {
+  margin: 6px 0 0;
+  font-size: 20px;
+  color: var(--beige);
+}
+
+/* ================================================================
+ * ⑪ クロージング
+ * ================================================================ */
+
+.reveal .slides > section.s-closing {
+  padding: 88px 120px 72px;
+}
+
+.closing-body {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  flex: 1;
+}
+
+.closing-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.offer {
+  margin: 4px 0 0;
+  font-family: var(--font-mincho);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .06em;
+}
+
+.offer-num {
+  display: inline-block;
+  min-width: 1.2em;
+  margin: 0 .08em;
+  font-size: 128px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.closing-text {
+  margin: 20px 0 0;
+  font-size: 23px;
+  line-height: 1.7;
+}
+
+.closing-place {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 0;
+  font-size: 22px;
+  color: var(--beige);
+}
+
+.closing-place-label {
+  padding: 2px 12px;
+  border: 1px solid var(--gold);
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.closing-side {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 260px;
+}
+
+.qr {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  background: var(--ivory);
+}
+
+.qr img {
+  object-fit: contain;
+}
+
+.qr-empty {
+  font-size: 20px;
+  color: var(--bg);
+}
+
+.qr-caption {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.closing-org {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-align: center;
+  color: var(--beige);
+}

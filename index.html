@@ -7,9 +7,9 @@
 
   <link rel="stylesheet" href="vendor/reveal/reset.css">
   <link rel="stylesheet" href="vendor/reveal/reveal.css">
-  <link rel="stylesheet" href="css/fonts.css?v=20260930-3">
-  <link rel="stylesheet" href="css/theme.css?v=20260930-3">
-  <link rel="stylesheet" href="css/motion.css?v=20260930-3">
+  <link rel="stylesheet" href="css/fonts.css?v=20260930-4">
+  <link rel="stylesheet" href="css/theme.css?v=20260930-4">
+  <link rel="stylesheet" href="css/motion.css?v=20260930-4">
 </head>
 <body>
   <div class="reveal">
@@ -325,32 +325,34 @@
       </section>
 
       <!-- クロージング -->
-      <section class="s-closing" data-step="100">
+      <section class="s-closing" data-step="90">
         <div class="frame m-frame" aria-hidden="true"></div>
-        <div class="closing-body m-group">
-          <div class="offers m-group">
-            <div class="offer m-group">
-              <div class="qr"><img src="assets/qr-corporate.png" alt="医療法人向け認定制度のQRコード"><span class="qr-empty">QRコード</span></div>
-              <div class="offer-text">
-                <p class="label">CORPORATE</p>
-                <h3 class="offer-name">医療法人向け認定制度</h3>
-                <p class="offer-limit">先着<span class="offer-num m-count" data-to="50">50</span>法人</p>
-              </div>
+        <div class="closing-head m-group">
+          <p class="label">LIMITED OFFER</p>
+          <h2 class="closing-title">整理券を配布しています。</h2>
+        </div>
+        <div class="offers m-group">
+          <div class="offer m-group">
+            <div class="offer-text">
+              <p class="label">CORPORATE</p>
+              <h3 class="offer-name">医療法人向け認定制度</h3>
+              <p class="offer-limit">先着<span class="offer-num m-count" data-to="50">50</span>法人</p>
             </div>
-            <div class="offers-divider m-line" aria-hidden="true"></div>
-            <div class="offer m-group">
-              <div class="qr"><img src="assets/qr-kanrishi.png" alt="医療AIガバナンス管理士のQRコード"><span class="qr-empty">QRコード</span></div>
-              <div class="offer-text">
-                <p class="label">INDIVIDUAL</p>
-                <h3 class="offer-name">医療AIガバナンス管理士</h3>
-                <p class="offer-limit">先着<span class="offer-open">上限なし</span></p>
-              </div>
-            </div>
+            <div class="qr"><img src="assets/qr-corporate.png" alt="医療法人向け認定制度のQRコード"><span class="qr-empty">QRコード</span></div>
           </div>
-          <div class="closing-main m-group">
-            <p class="label">LIMITED OFFER</p>
-            <h2 class="closing-title">整理券を<br>配布しています。</h2>
-            <p class="closing-text">気になった方は、<br>ぜひお立ち寄りください。</p>
+          <div class="offers-divider m-line is-vertical" aria-hidden="true"></div>
+          <div class="offer m-group">
+            <div class="offer-text">
+              <p class="label">INDIVIDUAL</p>
+              <h3 class="offer-name">医療AIガバナンス管理士</h3>
+              <p class="offer-limit">先着<span class="offer-open">上限なし</span></p>
+            </div>
+            <div class="qr"><img src="assets/qr-kanrishi.png" alt="医療AIガバナンス管理士のQRコード"><span class="qr-empty">QRコード</span></div>
+          </div>
+        </div>
+        <div class="closing-foot m-group">
+          <p class="closing-text">気になった方は、ぜひお立ち寄りください。</p>
+          <div class="closing-info">
             <!-- TODO: 配布場所が確定したら【配布場所】を差し替える -->
             <p class="closing-place"><span class="closing-place-label">配布場所</span>【配布場所】</p>
             <p class="closing-contact">お問い合わせは10月8日（木）から</p>
@@ -365,13 +367,14 @@
 
   <script src="vendor/reveal/reveal.js"></script>
   <script src="vendor/reveal/plugin/notes/notes.js"></script>
-  <script src="js/media.js?v=20260930-3"></script>
-  <script src="js/motion.js?v=20260930-3"></script>
+  <script src="js/media.js?v=20260930-4"></script>
+  <script src="js/motion.js?v=20260930-4"></script>
+  <script src="js/fit.js?v=20260930-4"></script>
   <script>
     Reveal.initialize({
       width: 1280,
       height: 720,
-      margin: 0,
+      margin: 0.02,
       center: false,
       hash: true,
       controls: false,

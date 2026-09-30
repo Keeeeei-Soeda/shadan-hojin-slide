@@ -851,77 +851,55 @@ body,
  * ================================================================ */
 
 .reveal .slides > section.s-closing {
-  padding: 80px 104px 64px;
-}
-
-.closing-body {
-  display: flex;
   align-items: center;
-  gap: 56px;
-  flex: 1;
+  padding: 72px 96px 60px;
+  text-align: center;
 }
 
-.closing-main {
+.closing-head {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  order: -1;
+  align-items: center;
 }
 
 .closing-title {
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   font-family: var(--font-mincho);
   font-size: 44px;
   font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: .06em;
-}
-
-.closing-text {
-  margin: 18px 0 0;
-  font-size: 23px;
-  line-height: 1.7;
-}
-
-.closing-place {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 28px 0 0;
-  font-size: 22px;
-  color: var(--beige);
-}
-
-.closing-place-label {
-  padding: 2px 12px;
-  border: 1px solid var(--gold);
-  font-size: 18px;
-  color: var(--gold);
-}
-
-.closing-contact {
-  margin: 12px 0 0;
-  font-size: 20px;
-  color: var(--beige);
+  line-height: 1.4;
+  letter-spacing: .08em;
 }
 
 .offers {
-  display: flex;
-  flex: none;
-  flex-direction: column;
-  gap: 24px;
-  width: 540px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  column-gap: 44px;
+  align-self: stretch;
+  margin: auto 0;
 }
 
 .offers-divider {
-  height: 1px;
+  grid-column: 2;
+  grid-row: 1;
   background: var(--gold-line);
 }
 
 .offer {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+  gap: 24px;
+  grid-row: 1;
+  text-align: left;
+}
+
+.offer:first-child {
+  grid-column: 1;
+}
+
+.offer:last-child {
+  grid-column: 3;
 }
 
 .offer-name {
@@ -930,17 +908,19 @@ body,
   font-size: 28px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
   white-space: nowrap;
 }
 
 .offer-limit {
-  margin: 6px 0 0;
+  height: 104px;
+  margin: 0;
   font-family: var(--font-mincho);
   font-size: 30px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 104px;
   letter-spacing: .06em;
+  white-space: nowrap;
 }
 
 .offer-num {
@@ -965,9 +945,9 @@ body,
   position: relative;
   flex: none;
   box-sizing: border-box;
-  width: 164px;
-  height: 164px;
-  padding: 8px;
+  width: 150px;
+  height: 150px;
+  padding: 7px;
   background: var(--ivory);
 }
 
@@ -981,12 +961,52 @@ body,
   color: var(--bg);
 }
 
+.closing-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.closing-text {
+  margin: 0;
+  font-size: 23px;
+}
+
+.closing-info {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.closing-place {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-size: 22px;
+  color: var(--beige);
+}
+
+.closing-place-label {
+  padding: 2px 12px;
+  border: 1px solid var(--gold);
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.closing-contact {
+  margin: 0;
+  font-size: 20px;
+  color: var(--beige);
+}
+
 .closing-org {
   margin: 0;
   font-family: var(--font-mincho);
   font-size: 22px;
   font-weight: 700;
   letter-spacing: .1em;
-  text-align: center;
   color: var(--beige);
 }

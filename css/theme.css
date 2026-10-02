@@ -193,6 +193,23 @@ body,
   display: none;
 }
 
+.photo-silhouette {
+  width: 46%;
+  height: auto;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+/* ⑩の大きな写真枠（.is-large）ではシルエットもやや細く */
+.photo.is-large .photo-silhouette {
+  width: 42%;
+  stroke-width: 1.75;
+}
+
 /* ⑩の大きな写真枠：縁取りはSVGの円で描く */
 .photo.is-large {
   width: 196px;
@@ -310,7 +327,8 @@ body,
  * ② 私たちはこんな団体です
  * ================================================================ */
 
-.s-about .lead {
+.s-about .lead,
+.s-practice .lead {
   margin: 18px 0 0;
   font-size: 22px;
   color: var(--beige);

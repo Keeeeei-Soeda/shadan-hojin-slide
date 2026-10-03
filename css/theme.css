@@ -789,9 +789,9 @@ body,
  * （⑧.5）メディキャンバス紹介
  * ================================================================ */
 
-/* 左は他スライドと揃えて88px、右だけ48pxに詰めて横幅を広げる */
+/* 左は他スライドと揃えて88px、右だけ40pxに詰めて横幅を広げる */
 .reveal .slides > section.s-practice {
-  padding-right: 48px;
+  padding-right: 40px;
 }
 
 /* 小さめの英字ラベル（カード内） */
@@ -940,6 +940,99 @@ body,
 .advisor-books {
   margin: 6px 0 0;
   font-size: 20px;
+  color: var(--beige);
+}
+
+/* ================================================================
+ * （⑩.5）メディア掲載（MEDIFAX web）
+ * ================================================================ */
+
+/* 左は他スライドと揃えて88px、右だけ40pxに詰めて横幅を広げる */
+.reveal .slides > section.s-press {
+  padding-right: 40px;
+}
+
+.press {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.press-clip {
+  flex: 0 0 auto;
+  align-self: center;
+  margin: 0;
+  border: 1px solid var(--gold-line);
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .42);
+}
+
+.press-clip img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 450px;
+}
+
+.press-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.press-quote {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .03em;
+  color: var(--ivory);
+}
+
+.press-quote .hl {
+  color: var(--gold);
+}
+
+.press-take {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--beige);
+}
+
+.press-note {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--beige);
+  opacity: .85;
+}
+
+.press-rule {
+  width: 46px;
+  height: 1px;
+  margin: 4px 0 2px;
+  background: var(--gold);
+}
+
+.press-outlet {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--gold);
+}
+
+.press-date {
+  margin: -8px 0 0;
+  font-size: 17px;
+  letter-spacing: .08em;
   color: var(--beige);
 }
 

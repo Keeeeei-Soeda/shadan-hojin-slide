@@ -1,6 +1,6 @@
 # shadan-hojin-slide
 
-一般社団法人 国際ヘルスケアAI管理推進協会が、2026年10月4日の日本レセプト学会 学術研究会 レセプションパーティーで行う5分間ピッチ用のスライド（全12枚）です。reveal.js 製のHTMLスライドで、デザインはネイビー×ゴールドです。
+一般社団法人 国際ヘルスケアAI管理推進協会が、2026年10月4日の日本レセプト学会 学術研究会 レセプションパーティーで行う5分間ピッチ用のスライド（全13枚）です。reveal.js 製のHTMLスライドで、デザインはネイビー×ゴールドです。
 
 仕様は [`cursor_instructions_pitch_slides.md`](cursor_instructions_pitch_slides.md) にまとめています。
 
@@ -38,6 +38,8 @@ https://keeeeei-soeda.github.io/shadan-hojin-slide/
 | QRコード：医療法人向け認定制度（https://www.iha-as.com/entry-live/） | `assets/qr-corporate.png`（配置済み） |
 
 人物写真は丸く切り抜いて表示するため、顔が中央に来る正方形の画像を用意してください。
+
+メディア掲載スライドの記事画像は `assets/press/medifax.png` です。差し替えるときは、スライドのタイトルと左端が揃うよう、ページ左側の余白を切り落とした画像を置いてください。
 
 ## ファイル構成
 

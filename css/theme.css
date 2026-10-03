@@ -1126,7 +1126,7 @@ body,
 }
 
 .offer-open {
-  margin-left: .2em;
+  margin-right: .1em;
   font-size: 44px;
   color: var(--gold);
 }

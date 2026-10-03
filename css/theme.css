@@ -786,6 +786,66 @@ body,
 }
 
 /* ================================================================
+ * （⑧.5）メディキャンバス紹介
+ * ================================================================ */
+
+/* 左は他スライドと揃えて88px、右だけ48pxに詰めて横幅を広げる */
+.reveal .slides > section.s-practice {
+  padding-right: 48px;
+}
+
+/* 小さめの英字ラベル（カード内） */
+.s-practice .label.is-sm {
+  font-size: 16px;
+}
+
+/* 2カード：残りの高さいっぱいに広げて横並び */
+.practice-cards {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 34px 0 22px;
+}
+
+.practice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 30px;
+  border: 1px solid var(--gold-line);
+  box-sizing: border-box;
+}
+
+.practice-card .card-title {
+  margin-top: 2px;
+}
+
+/* 2行目の説明は少しだけ控えめに */
+.practice-card .card-text + .card-text {
+  opacity: .9;
+}
+
+/* 行動喚起：ゴールド地に濃紺文字の横長ストリップ（下端） */
+.practice-cta {
+  padding: 22px 36px;
+  background: var(--gold);
+  box-sizing: border-box;
+}
+
+.practice-cta p {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--bg);
+}
+
+.practice-cta p b {
+  font-weight: 700;
+}
+
+/* ================================================================
  * ⑨ 理事紹介
  * ================================================================ */
 

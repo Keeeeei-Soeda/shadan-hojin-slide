@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>協会配布フライヤー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  /* A4配布資料（表・裏）｜白基調・印刷向け。アクセントに協会のネイビー×ゴールド、見出しは明朝 */
+  :root{
+    --paper:#FFFFFF; --mat:#E8E5DC;
+    --ink:#17243F;        /* 見出し・本文（濃紺） */
+    --ink-soft:#4C5468;   /* 補足文 */
+    --gold:#9C7A2E;       /* ラベル・小アクセント（白地で可読） */
+    --gold-bright:#BF9A4D;/* 星・罫線・枠（装飾） */
+    --line:#E4DCCB;       /* 罫線・枠（淡い） */
+    --card:#F8F5EE;       /* カード地 */
+    --font-mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+    --font-gothic:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mat);color:var(--ink);font-family:var(--font-gothic);
+    padding-block:28px;padding-left:16px;padding-right:16px;
+    display:flex;flex-direction:column;align-items:center;gap:26px;}
+
+  .sheetwrap{width:100%;max-width:794px;}
+  .scaler{position:relative;width:100%;}
+  .scaler::before{content:"";display:block;padding-top:141.43%;} /* A4 297/210 */
+  .page{position:absolute;top:0;left:0;width:794px;height:1123px;transform-origin:top left;
+    background:var(--paper);overflow:hidden;box-shadow:0 8px 26px rgba(23,36,63,.14);}
+  .page-inner{position:absolute;inset:0;box-sizing:border-box;padding:58px 62px;
+    display:flex;flex-direction:column;}
+
+  .frame{position:absolute;inset:22px;border:1px solid var(--gold-bright);pointer-events:none;}
+
+  .eyebrow{margin:0;font-size:14px;font-weight:700;letter-spacing:.24em;color:var(--gold);}
+  .stars{margin:0;font-size:20px;letter-spacing:.3em;color:var(--gold-bright);}
+
+  /* ===== 表面 ===== */
+  .f-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .f-org{margin:0;font-family:var(--font-mincho);font-size:23px;font-weight:700;letter-spacing:.08em;color:var(--ink);}
+  .f-orgen{margin:0;font-size:12px;letter-spacing:.22em;color:var(--ink-soft);}
+
+  .f-hero{margin:20px 0 0;text-align:center;}
+  .f-title{margin:0;font-family:var(--font-mincho);font-size:44px;font-weight:700;line-height:1.4;
+    letter-spacing:.05em;color:var(--ink);}
+  .f-title .em{color:var(--gold);}
+  .f-sub{margin:16px auto 0;max-width:600px;font-size:16.5px;line-height:1.85;color:var(--ink-soft);}
+
+  .f-rule{width:58px;height:2px;background:var(--gold-bright);margin:24px auto 0;}
+
+  .f-cta-label{margin:20px 0 4px;text-align:center;font-family:var(--font-mincho);font-size:25px;font-weight:700;
+    letter-spacing:.06em;color:var(--ink);}
+  .f-cta-note{margin:0;text-align:center;font-size:15px;letter-spacing:.04em;color:var(--ink-soft);}
+
+  .qr-row{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px;}
+  .qr-card{border:1px solid var(--line);background:var(--card);border-radius:3px;
+    padding:22px 22px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;}
+  .qr-tag{margin:0;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gold);}
+  .qr-name{margin:0;font-family:var(--font-mincho);font-size:21px;font-weight:700;letter-spacing:.03em;color:var(--ink);line-height:1.4;}
+  .qr-limit{margin:-3px 0 0;font-size:14px;color:var(--ink-soft);}
+  .qr-box{width:170px;height:170px;margin:8px 0 2px;background:#fff;border:1px solid var(--line);border-radius:4px;
+    display:flex;align-items:center;justify-content:center;position:relative;}
+  .qr-box::after{content:"QRコード";position:absolute;font-family:var(--font-gothic);
+    font-size:14px;letter-spacing:.12em;color:#9a948a;}
+  .qr-box .ph{width:134px;height:134px;border:2px dashed #cdbf9f;border-radius:6px;}
+  .qr-url{margin:0;font-size:13px;letter-spacing:.02em;color:var(--ink-soft);word-break:break-all;}
+
+  .f-steps{display:flex;align-items:stretch;justify-content:center;gap:0;margin-top:18px;}
+  .f-step{flex:1;text-align:center;padding:0 10px;}
+  .f-step .n{display:inline-flex;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gold);
+    color:var(--gold);align-items:center;justify-content:center;font-size:18px;font-family:var(--font-mincho);font-weight:700;}
+  .f-step p{margin:10px 0 0;font-size:16px;line-height:1.6;color:var(--ink);}
+  .f-stepdiv{align-self:center;color:var(--gold-bright);font-size:18px;}
+
+  .f-foot{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink-soft);letter-spacing:.03em;}
+  .f-foot b{color:var(--ink);font-weight:700;}
+  .f-foot .site{color:var(--gold);font-weight:700;letter-spacing:.08em;}
+
+  /* ===== 裏面 ===== */
+  .b-head{display:flex;flex-direction:column;gap:7px;}
+  .b-title{margin:8px 0 0;font-family:var(--font-mincho);font-size:28px;font-weight:700;line-height:1.45;
+    letter-spacing:.05em;color:var(--ink);}
+  .b-title .em{color:var(--gold);}
+  .b-lead{margin:10px 0 0;font-size:15px;line-height:1.82;color:var(--ink-soft);}
+
+  .b-sec{margin-top:17px;}
+  .b-sec-h{display:flex;align-items:baseline;gap:14px;margin:0 0 11px;}
+  .b-sec-h .en{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gold);}
+  .b-sec-h .ja{font-family:var(--font-mincho);font-size:21px;font-weight:700;letter-spacing:.04em;color:var(--ink);}
+
+  .b-two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .b-card{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:15px 22px;}
+  .b-card h4{margin:0;font-family:var(--font-mincho);font-size:19.5px;font-weight:700;letter-spacing:.03em;color:var(--ink);}
+  .b-card .tag{display:inline-block;margin:0 0 9px;font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--gold);}
+  .b-card p{margin:8px 0 0;font-size:14px;line-height:1.75;color:var(--ink-soft);}
+  .b-card .stars{font-size:16px;letter-spacing:.2em;margin:0 0 3px;}
+
+  .b-areas{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;}
+  .b-tag{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 17px;font-size:14.5px;color:var(--ink);letter-spacing:.05em;}
+
+  .b-diff{display:grid;grid-template-columns:1fr 1fr;gap:9px 28px;margin:0;padding:0;list-style:none;}
+  .b-diff li{position:relative;padding-left:22px;font-size:15.5px;line-height:1.7;color:var(--ink);}
+  .b-diff li::before{content:"★";position:absolute;left:0;color:var(--gold-bright);font-size:13px;top:4px;}
+
+  .b-people{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin:0;padding:0;list-style:none;}
+  .b-people li{font-size:14.5px;line-height:1.7;color:var(--ink-soft);}
+  .b-people b{color:var(--ink);font-weight:700;}
+  .b-people .role{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.1em;margin-right:7px;}
+
+  .b-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);text-align:center;}
+  .b-foot .org{margin:0;font-family:var(--font-mincho);font-size:17px;font-weight:700;letter-spacing:.08em;color:var(--ink);}
+  .b-foot .meta{margin:8px 0 0;font-size:13.5px;color:var(--ink-soft);letter-spacing:.03em;}
+  .b-foot .site{color:var(--gold);font-weight:700;}
+
+  .pagetag{font-size:12px;color:var(--ink-soft);opacity:.85;text-align:center;letter-spacing:.08em;margin:0 0 8px;}
+  .hint{font-size:13px;color:var(--ink-soft);text-align:center;max-width:794px;line-height:1.7;}
+  .hint b{color:var(--gold);font-weight:700;}
+</style>
+</head>
+<body>
+<!-- 表面 -->
+<div class="sheetwrap">
+  <p class="pagetag">表面（おもて）</p>
+  <div class="scaler">
+    <div class="page">
+      <div class="frame" aria-hidden="true"></div>
+      <div class="page-inner">
+        <div class="f-head">
+          <p class="stars">★★★</p>
+          <p class="f-org">一般社団法人 国際ヘルスケアAI管理推進協会</p>
+          <p class="f-orgen">INTERNATIONAL HEALTHCARE AI ASSOCIATION</p>
+        </div>
+
+        <div class="f-hero">
+          <h1 class="f-title">医療の現場に、<br>正しい<span class="em">AI管理</span>を。</h1>
+          <p class="f-sub">AIを「推進」するのではなく、「管理」する。研修・評価・認定で、医療機関のAI活用を“安全に”根づかせる一般社団法人です。</p>
+        </div>
+
+        <div class="f-rule" aria-hidden="true"></div>
+
+        <p class="f-cta-label">まずは、ご登録ください。</p>
+        <p class="f-cta-note">スマートフォンでQRコードを読み取ると、登録フォームが開きます。</p>
+
+        <div class="qr-row">
+          <div class="qr-card">
+            <p class="qr-tag">FOR CORPORATE</p>
+            <p class="qr-name">医療法人向け<br>認定制度 スリースター</p>
+            <p class="qr-limit">先着50法人</p>
+            <div class="qr-box"><span class="ph"></span></div>
+            <p class="qr-url">iha-as.com/entry-live</p>
+          </div>
+          <div class="qr-card">
+            <p class="qr-tag">FOR INDIVIDUAL</p>
+            <p class="qr-name">医療AI<br>ガバナンス管理士</p>
+            <p class="qr-limit">先着上限なし</p>
+            <div class="qr-box"><span class="ph"></span></div>
+            <p class="qr-url">iha-as.com/kanrishi-live</p>
+          </div>
+        </div>
+
+        <div class="f-steps">
+          <div class="f-step"><span class="n">1</span><p>QRコードを<br>読み取る</p></div>
+          <div class="f-stepdiv">›</div>
+          <div class="f-step"><span class="n">2</span><p>フォームに<br>登録する</p></div>
+          <div class="f-stepdiv">›</div>
+          <div class="f-step"><span class="n">3</span><p>ご案内が<br>届きます</p></div>
+        </div>
+
+        <div class="f-foot">
+          <span>お問い合わせ：<b>info@iha-as.com</b>（10月8日〜）</span>
+          <span class="site">www.iha-as.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 裏面 -->
+<div class="sheetwrap">
+  <p class="pagetag">裏面（うら）</p>
+  <div class="scaler">
+    <div class="page">
+      <div class="page-inner">
+        <div class="b-head">
+          <p class="eyebrow">ABOUT US</p>
+          <h2 class="b-title">AIを「<span class="em">推進</span>」するのではなく、「<span class="em">管理</span>」する。</h2>
+          <p class="b-lead">医療・福祉分野におけるAIの適正かつ安全な活用を推進する一般社団法人です。個人の責任から、組織の責任へ。病院主導のスタッフ教育と、組織全体の評価・改善を支えます。</p>
+        </div>
+
+        <div class="b-sec">
+          <div class="b-sec-h"><span class="en">PROGRAMS</span><span class="ja">2つの認定制度</span></div>
+          <div class="b-two">
+            <div class="b-card">
+              <span class="tag">CORPORATE</span>
+              <h4>法人認定制度 スリースター</h4>
+              <p class="stars">★ ★ ★</p>
+              <p>組織全体を毎年評価し、達成度を星1〜3で認定。弱点と改善策まで返却します。全職員（派遣・アルバイト含む）の受講を前提に、AI活用の質を可視化します。</p>
+            </div>
+            <div class="b-card">
+              <span class="tag">INDIVIDUAL</span>
+              <h4>医療AIガバナンス管理士</h4>
+              <p>院内ルール・法令・インシデント対応を踏まえ、組織のAIガバナンスを統括・助言する人材を認定。2026年度は講習受講で認定、2027年より試験制へ（認定書はオンライン発行）。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-sec">
+          <div class="b-sec-h"><span class="en">EVALUATION</span><span class="ja">4つの評価領域</span></div>
+          <div class="b-areas">
+            <span class="b-tag">理解 ― 受講率・テスト正答率</span>
+            <span class="b-tag">ルール ― 利用ルールの文書化</span>
+            <span class="b-tag">対応 ― 事故時の報告フロー</span>
+            <span class="b-tag">体制 ― 管理責任者と見直しの仕組み</span>
+          </div>
+        </div>
+
+        <div class="b-sec">
+          <div class="b-sec-h"><span class="en">OUR APPROACH</span><span class="ja">当協会の特長</span></div>
+          <ul class="b-diff">
+            <li>ガバナンス管理に特化</li>
+            <li>個人ではなく、組織全体を評価</li>
+            <li>評価から改善まで伴走</li>
+            <li>海外の医療AI事例・国際動向を反映</li>
+          </ul>
+        </div>
+
+        <div class="b-sec">
+          <div class="b-sec-h"><span class="en">MEMBERS</span><span class="ja">体制</span></div>
+          <ul class="b-people">
+            <li><span class="role">会長</span><b>大友 達也</b>　日本レセプト学会 理事長／就実大学 教授</li>
+            <li><span class="role">理事</span><b>小熊 英國</b>　グロービス経営大学院 教授</li>
+            <li><span class="role">理事</span><b>清水 隆明</b>　姫路獨協大学 教授</li>
+            <li><span class="role">理事</span><b>佐瀬 雄治</b>　北海道情報大学 准教授</li>
+            <li><span class="role">理事</span><b>鈴木 崚平</b>　事務局</li>
+            <li><span class="role">理事</span><b>副田 渓</b>　講師／監修</li>
+            <li><span class="role">顧問</span><b>増田 雅史</b>　弁護士（AI×法律）</li>
+            <li><span class="role">顧問</span><b>坪 茂典</b>　医療経営×組織変革</li>
+          </ul>
+        </div>
+
+        <div class="b-foot">
+          <p class="org">一般社団法人 国際ヘルスケアAI管理推進協会</p>
+          <p class="meta">お問い合わせ：info@iha-as.com　｜　<span class="site">www.iha-as.com</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fit(){
+    document.querySelectorAll('.sheetwrap').forEach(function(w){
+      var page=w.querySelector('.page');
+      page.style.transform='scale('+(w.querySelector('.scaler').clientWidth/794)+')';
+    });
+  }
+  window.addEventListener('resize',fit);fit();
+  window.addEventListener('load',fit);
+</script>
+</body>
+</html>
